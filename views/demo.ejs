@@ -1,0 +1,110 @@
+<div class="fill neomin">
+    <div class="left-panel">
+            <div class="button-container">
+                <button type="button" id="btn-radar" class="btn btn-radar neoplus-menu" data-toggle="tooltip"
+                    data-placement="right" title="Weather Radar BMKG"><i class="icofont-ui-weather"></i></button>
+            </div>
+            <div class="button-container">
+                <button type="button" id="btn-find-loc" class="btn btn-find-loc neoplus-menu" data-toggle="tooltip"
+                    data-placement="right" title="Find My Location"><i class="icofont-focus"></i></button>
+            </div>
+            <div class="button-container">
+                <button type="button" id="btn-basemaps" class="btn btn-basemaps neoplus-menu" data-toggle="tooltip"
+                    data-placement="right" title="Change Basemaps"><i class="icofont-map"></i></button>
+            </div>
+            <div class="button-container"style="margin-right:0">
+                <button type="button" id="btn-overlay" class="btn btn-overlay neoplus-menu" data-toggle="tooltip"
+                    data-placement="right" title="Overlay Layers"><i class="icofont-layers"></i></i></button>
+            </div>
+    </div>
+    <div id="right-panel" class="container right-panel">
+                <div class="panel-title">
+                    <h6>Indonesia Weather Radars (BMKG)</h6>
+                </div>
+                <div class="right-panel-info">
+                    <div class="player-time" style="margin-right:10px">
+                        <div class="radar-player">
+                            <input class="player-btn" type="button" onclick="stop(); showFrame(animationPosition - 1); return;" value="&lt;" />
+                            <input class="player-btn" style="margin:0 5px; padding:0 20px; flex:2" type="button" onclick="playStop();" value="Play / Stop" />
+                            <input class="player-btn" type="button" onclick="stop(); showFrame(animationPosition + 1); return;" value="&gt;" />
+                        </div>
+                        <div class="time-info">
+                            <div id="past-forcast">PAST</div>
+                            <div id="timestamp">FRAME TIME</div>
+                        </div>
+                    </div>
+                    <div class="radar-style">
+                        <div class="style-radar">
+                            <select id="colors" onchange="setColors(); return;">
+                                <option value="0">Black and White Values</option>
+                                <option value="1">Original</option>
+                                <option value="2" selected="selected">Universal Blue</option>
+                                <option value="3">TITAN</option>
+                                <option value="4">The Weather Channel</option>
+                                <option value="5">Meteored</option>
+                                <option value="6">NEXRAD Level-III</option>
+                                <option value="7">RAINBOW @ SELEX-SI</option>
+                                <option value="8">Dark Sky</option>
+                            </select>
+                        </div>
+                        <div class="radio-radar" style="margin-right:10px">
+                            <div style="margin-right:5px">
+                                <input type="radio" name="kind" checked="checked" onchange="setKind('radar')"><label> Radar</label> 
+                            </div>
+                            <div class="div">
+                                <input type="radio" name="kind" onchange="setKind('satellite')"><label> Infrared Sattelite</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <div id="basemaps-panel" class="basemaps-panel"> 
+        <div class="basemaps-content-title">
+            <h5 style="margin:0">Basemaps</h5>
+        </div>
+        <div id="basemaps-content" class="basemaps-content">
+            <% basemap.forEach((b) => { %>
+            <div class="basemap-option">
+                <div id=<%= b.name %> class="basemap"></div>
+                    <div class="basemap-info">
+                    <div class="basemap-name"><%= b.name %></div>
+                    <div id="btn-<%= b.name %>"class="btn btn-apply-basemaps">Apply</div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+    <div id="search-panel" class="search-panel">
+        <div class="search-input neomin">
+            <a href="" target="_blank" hidden></a>
+            <input type="text" placeholder="Search Location">
+            <div class="autocom-box">
+                <!-- here list are inserted from javascript -->
+            </div>
+            <div class="icon"><i class="icofont-search-1"></i></div>
+        </div>
+    </div>
+    <div id="marker-info" class="marker-info">
+        <div class="marker-info-container">
+            <div class="marker-image"><img src="img/empty_image.png"></div>
+            <div class="marker-detail-info">
+                <div id="marker-name-location" class="marker-name-location"></div>
+                <div id="marker-latlng"></div>
+            </div>
+        </div>
+        <div id="close-marker-info" class="close-marker-info"><i class="icofont-close"></i></div>
+    </div>
+
+    <div id="map"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+<script src="./vendor/js/rainviewer.js"></script>
+<script src="./vendor/js/mapLocate.js"></script>
+<script src="./vendor/js/basemapsControl.js"></script>
+<script src="./vendor/leaflet/TipCircle.js"></script>
+<script src="./vendor/js/locationSearch.js"></script>
+<script src="./vendor/js/suggestions.js"></script>
