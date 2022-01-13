@@ -13,7 +13,7 @@ if(!fs.existsSync(dataPath)){
 }
 
 const loadProviders = ()=>{
-    const file = fs.readFileSync('data/basemaps-providers.json','utf-8');
+    const file = fs.readFileSync('./data/basemaps-providers.json','utf-8');
     const providers =JSON.parse(file);
 
     return providers;
