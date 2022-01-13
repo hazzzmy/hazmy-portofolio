@@ -58,22 +58,7 @@
                     </div>
                 </div>
     </div>
-    <div id="basemaps-panel" class="basemaps-panel"> 
-        <div class="basemaps-content-title">
-            <h5 style="margin:0">Basemaps</h5>
-        </div>
-        <div id="basemaps-content" class="basemaps-content">
-            <% basemap.forEach((b) => { %>
-            <div class="basemap-option">
-                <div id=<%= b.name %> class="basemap"></div>
-                    <div class="basemap-info">
-                    <div class="basemap-name"><%= b.name %></div>
-                    <div id="btn-<%= b.name %>"class="btn btn-apply-basemaps">Apply</div>
-                </div>
-            </div>
-            <% }) %>
-        </div>
-    </div>
+
     <div id="search-panel" class="search-panel">
         <div class="search-input neomin">
             <a href="" target="_blank" hidden></a>
