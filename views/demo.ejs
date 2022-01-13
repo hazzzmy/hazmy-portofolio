@@ -58,7 +58,22 @@
                     </div>
                 </div>
     </div>
-
+    <div id="basemaps-panel" class="basemaps-panel"> 
+        <div class="basemaps-content-title">
+            <h5 style="margin:0">Basemaps</h5>
+        </div>
+        <div id="basemaps-content" class="basemaps-content">
+            <% basemap.forEach((b) => { %>
+            <div class="basemap-option">
+                <div id=<%= b.name %> class="basemap"></div>
+                    <div class="basemap-info">
+                    <div class="basemap-name"><%= b.name %></div>
+                    <div id="btn-<%= b.name %>"class="btn btn-apply-basemaps">Apply</div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
     <div id="search-panel" class="search-panel">
         <div class="search-input neomin">
             <a href="" target="_blank" hidden></a>
@@ -83,7 +98,9 @@
     <div id="map"></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="./vendor/js/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 
 <script src="./vendor/js/rainviewer.js"></script>
 <script src="./vendor/js/mapLocate.js"></script>
